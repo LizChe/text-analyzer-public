@@ -35,3 +35,4 @@ test/
 *.vscode/
 *.idea/
 *.iml
+*.DS_Store
