@@ -1,4 +1,4 @@
-package com.codecool.textexpert.dao;
+package com.codecool.textexpert.models;
 
 import com.codecool.textexpert.iterators.CharIterator;
 import com.codecool.textexpert.iterators.TextIterator;
@@ -6,11 +6,11 @@ import com.codecool.textexpert.iterators.WordIterator;
 
 import java.util.Iterator;
 
-public class TextFileDao implements TextIterator {
+public class FileContent implements TextIterator {
 
     private String fileName;
 
-    public TextFileDao(String fileName) {
+    public FileContent(String fileName) {
         this.fileName = fileName;
     }
 
