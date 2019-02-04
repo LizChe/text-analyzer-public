@@ -1,4 +1,4 @@
-package com.codecool.textexpert.models;
+package com.codecool.textexpert.dao;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,9 +8,9 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import com.codecool.textexpert.iterators.CharIterator;
-import com.codecool.textexpert.iterators.TextIterator;
-import com.codecool.textexpert.iterators.WordIterator;
+import com.codecool.textexpert.iterator.CharIterator;
+import com.codecool.textexpert.iterator.TextIterator;
+import com.codecool.textexpert.iterator.WordIterator;
 
 public class FileContent implements TextIterator {
 
