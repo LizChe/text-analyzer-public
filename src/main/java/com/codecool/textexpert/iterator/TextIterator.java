@@ -1,4 +1,4 @@
-package com.codecool.textexpert.iterators;
+package com.codecool.textexpert.iterator;
 
 import java.util.Iterator;
 
