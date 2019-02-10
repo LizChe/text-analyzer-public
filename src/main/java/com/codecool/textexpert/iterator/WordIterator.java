@@ -1,6 +1,7 @@
 package com.codecool.textexpert.iterator;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class WordIterator implements Iterator<String> {
     }
 
     private void addWords(FileContent fileContent) {
+        words = new ArrayList<>();
         List<String> fileContentToParse = fileContent.getFileContent();
         StringBuilder stringBuilder = new StringBuilder();
 
