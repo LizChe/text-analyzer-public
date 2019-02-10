@@ -1,6 +1,9 @@
 package com.codecool.textexpert.service;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 public class StatisticalAnalysis {
@@ -18,9 +21,11 @@ public class StatisticalAnalysis {
     }
  
     public int dictionarySize() {
-        /**
-         * @return the numbber of unique elements of the dataset
-         */
+        Set<String> uniqueWords = new HashSet<>();
+        while (iterator.hasNext()) {
+            uniqueWords.add(iterator.next());
+        }
+        return uniqueWords.size();
     }
  
     public int size() {
