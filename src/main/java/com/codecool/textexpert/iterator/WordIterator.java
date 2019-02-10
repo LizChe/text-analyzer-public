@@ -39,7 +39,7 @@ public class WordIterator implements Iterator<String> {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (String string : fileContentToParse) {
-            stringBuilder.append(string);
+            stringBuilder.append(string + "\n");
         }
         words = Arrays.asList(stringBuilder.toString().split("\\s+"));
     }
