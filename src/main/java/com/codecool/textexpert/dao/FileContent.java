@@ -19,6 +19,7 @@ public class FileContent implements TextIterator {
 
     public FileContent(String fileName) {
         this.fileName = fileName;
+        loadFileContent(fileName);
     }
 
     public Iterator<String> charIterator() {
@@ -31,6 +32,10 @@ public class FileContent implements TextIterator {
 
     public String getFileName() {
         return fileName;
+    }
+
+    public List<String> getFileContent() {
+        return fileContent;
     }
 
     private void loadFileContent(String fileName) {
@@ -49,8 +54,4 @@ public class FileContent implements TextIterator {
         textFile.close();
     }
 
-    public List<String> getFileContent() {
-        loadFileContent(fileName);
-        return fileContent;
-    }
 }
