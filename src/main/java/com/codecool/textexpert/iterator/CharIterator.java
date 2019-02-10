@@ -8,12 +8,11 @@ import com.codecool.textexpert.dao.FileContent;
 
 public class CharIterator implements Iterator<String> {
 
-    private FileContent fileContent;
     private List<String> chars;
     private int index;
 
     public CharIterator(FileContent fileContent) {
-        this.fileContent = fileContent;
+        addChars(fileContent);
     }
 
     @Override
@@ -29,6 +28,10 @@ public class CharIterator implements Iterator<String> {
         return null;
     }
 
+    public List<String> getChars() {
+        return chars;
+    }
+
     private void addChars(FileContent fileContent) {
         List<String> fileContentToParse = fileContent.getFileContent();
         chars = new ArrayList<>();
@@ -38,10 +41,5 @@ public class CharIterator implements Iterator<String> {
                 chars.add(Character.toString(letter));
             }
         }
-    }
-
-    public List<String> getChars() {
-        addChars(fileContent);
-        return chars;
     }
 }
