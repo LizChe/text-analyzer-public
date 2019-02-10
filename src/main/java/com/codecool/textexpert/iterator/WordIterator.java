@@ -8,12 +8,11 @@ import com.codecool.textexpert.dao.FileContent;
 
 public class WordIterator implements Iterator<String> {
 
-    private FileContent fileContent;
     private List<String> words;
     private int index;
 
     public WordIterator(FileContent fileContent) {
-        this.fileContent = fileContent;
+        addWords(fileContent);
     }
 
     @Override
@@ -28,6 +27,10 @@ public class WordIterator implements Iterator<String> {
         }
         return null;
     }
+    
+    public List<String> getWords() {
+        return words;
+    }
 
     private void addWords(FileContent fileContent) {
         List<String> fileContentToParse = fileContent.getFileContent();
@@ -37,10 +40,5 @@ public class WordIterator implements Iterator<String> {
             stringBuilder.append(string);
         }
         words = Arrays.asList(stringBuilder.toString().split("\\s+"));
-    }
-
-    public List<String> getWords() {
-        addWords(fileContent);
-        return words;
     }
 }
