@@ -49,9 +49,8 @@ public class FileContent implements TextIterator {
         }
 
         while (textFile.hasNext()) {
-            fileContent.add(textFile.nextLine());
+            fileContent.add(textFile.nextLine().toLowerCase());
         }
         textFile.close();
     }
-
 }
