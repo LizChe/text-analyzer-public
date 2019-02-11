@@ -1,5 +1,6 @@
 package com.codecool.textexpert.service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,9 +16,13 @@ public class StatisticalAnalysis {
     }
  
     public int countOf(String... elems) {
-        /**
-         * @return sum of all occurences of the elements given as arguments
-         */
+        int counter = 0;
+        while (iterator.hasNext()) {
+            if (Arrays.stream(elems).anyMatch(iterator.next() :: equals)) {
+                counter ++;
+            }
+        }
+        return counter;
     }
  
     public int dictionarySize() {
