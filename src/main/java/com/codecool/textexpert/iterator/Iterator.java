@@ -2,7 +2,7 @@ package com.codecool.textexpert.iterator;
 
 public interface Iterator {
 
-    boolean hasNext();
+    public boolean hasNext();
 
-    String next();
+    public String next();
 }
