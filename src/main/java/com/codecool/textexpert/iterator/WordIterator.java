@@ -18,6 +18,10 @@ public class WordIterator implements Iterator<String> {
 
     @Override
     public boolean hasNext() {
+        if (index == words.size()) {
+            index = 0;
+            return false;
+        }
         return index < words.size();
     }
 
@@ -27,10 +31,6 @@ public class WordIterator implements Iterator<String> {
             return words.get(index++);
         }
         return null;
-    }
-    
-    public List<String> getWords() {
-        return words;
     }
 
     private void addWords(FileContent fileContent) {
