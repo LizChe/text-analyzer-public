@@ -15,10 +15,10 @@ public class StatisticalAnalysis {
         this.iterator = iterator;
     }
 
-    public int countOf(String... elems) {
+    public int countOf(String... elements) {
         int counter = 0;
         while (iterator.hasNext()) {
-            if (Arrays.stream(elems).anyMatch(iterator.next()::equals)) {
+            if (Arrays.stream(elements).anyMatch(iterator.next()::equalsIgnoreCase)) {
                 counter++;
             }
         }
@@ -54,12 +54,20 @@ public class StatisticalAnalysis {
         }
 
         Set<String> occuredMoreThanN = new HashSet<>();
-        while (iterator.hasNext()) {
-            String word = iterator.next();
-            if (countOfUniqueWords.get(word) > n && !countOfUniqueWords.containsKey(word)) {
-                occuredMoreThanN.add(word);
+        for (String key : countOfUniqueWords.keySet()) {
+            if (countOfUniqueWords.get(key) > n) {
+                occuredMoreThanN.add(key);
             }
         }
         return occuredMoreThanN;
+    }
+
+    public Set<String> getUniqueChars() {
+        Set<String> uniqueChars = new HashSet<>();
+        while (iterator.hasNext()) {
+            String letter = iterator.next();
+            uniqueChars.add(letter);
+        }
+        return uniqueChars;
     }
 }
