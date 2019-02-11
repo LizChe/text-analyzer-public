@@ -17,6 +17,10 @@ public class CharIterator implements Iterator<String> {
 
     @Override
     public boolean hasNext() {
+        if (index == chars.size()) {
+            index = 0;
+            return false;
+        }
         return index < chars.size();
     }
 
@@ -26,10 +30,6 @@ public class CharIterator implements Iterator<String> {
             return chars.get(index++);
         }
         return null;
-    }
-
-    public List<String> getChars() {
-        return chars;
     }
 
     private void addChars(FileContent fileContent) {
