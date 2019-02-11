@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public interface TextIterator {
 
-    Iterator<String> charIterator();
+    public Iterator<String> charIterator();
 
-    Iterator<String> wordIterator();
+    public Iterator<String> wordIterator();
 }
