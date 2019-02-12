@@ -6,14 +6,13 @@ import java.util.Set;
 
 import com.codecool.textexpert.dao.FileContent;
 import com.codecool.textexpert.service.StatisticalAnalysis;
-import com.codecool.textexpert.iterator.TextIterator;
 import com.codecool.textexpert.view.View;
 
 public class StatisticalAnalysisController {
 
     private View view;
     private String[] args;
-    private TextIterator iterator;
+    private FileContent fileContent;
     private StatisticalAnalysis wordAnalysis;
     private StatisticalAnalysis charAnalysis;
 
@@ -26,18 +25,18 @@ public class StatisticalAnalysisController {
         long startTime = System.nanoTime();
         view.printLogo();
         for (String fileName : args) {
-            iterator = new FileContent(fileName);
-            wordAnalysis = new StatisticalAnalysis(iterator.wordIterator());
-            charAnalysis = new StatisticalAnalysis(iterator.charIterator());
-            showAnalysis(fileName);
+            fileContent = new FileContent(fileName);
+            view.printMessage(fileName);
+            wordAnalysis = new StatisticalAnalysis(fileContent.wordIterator());
+            charAnalysis = new StatisticalAnalysis(fileContent.charIterator());
+            showAnalysis();
         }
         long stopTime = System.nanoTime();
         double benchmarkTime = (stopTime - startTime) / 1E9;
-        view.printMessage("𝕭𝖊𝖓𝖈𝖍𝖒𝖆𝖗𝖐 𝖙𝖎𝖒𝖊: " + benchmarkTime + " 𝖘𝖊𝖈𝖔𝖓𝖉𝖘");
+        view.printFormattedMessage("%s%.3f %s%n", "𝕭𝖊𝖓𝖈𝖍𝖒𝖆𝖗𝖐 𝖙𝖎𝖒𝖊: ", benchmarkTime,"𝖘𝖊𝖈𝖔𝖓𝖉𝖘");
     }
 
-    private void showAnalysis(String fileName) {
-        view.printMessage(fileName);
+    private void showAnalysis() {
         view.printMessage("𝕮𝖍𝖆𝖗 𝖈𝖔𝖚𝖓𝖙: " + charAnalysis.size());
         view.printMessage("𝖂𝖔𝖗𝖉 𝖈𝖔𝖚𝖓𝖙: " + wordAnalysis.size());
         view.printMessage("𝕯𝖎𝖈𝖙 𝖘𝖎𝖟𝖊: " + wordAnalysis.dictionarySize());
@@ -84,7 +83,7 @@ public class StatisticalAnalysisController {
         }
 
         for (Map.Entry<String, Double> entry : charsPercentage.entrySet()) {
-            System.out.printf("|%s -> %.0f%s| ", entry.getKey(), entry.getValue(), "%");
+            view.printFormattedMessage("|%s -> %.0f%s| ", entry.getKey(), entry.getValue(), "%");
         }
     }
 }
