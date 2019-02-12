@@ -83,7 +83,7 @@ public class StatisticalAnalysisController {
         }
 
         for (Map.Entry<String, Double> entry : charsPercentage.entrySet()) {
-            view.printFormattedMessage("|%s -> %.0f%s| ", entry.getKey(), entry.getValue(), "%");
+            view.printFormattedMessage("|%s -> %.1f%s| ", entry.getKey(), entry.getValue(), "%");
         }
     }
 }
