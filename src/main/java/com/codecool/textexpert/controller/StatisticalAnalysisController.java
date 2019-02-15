@@ -12,7 +12,6 @@ public class StatisticalAnalysisController {
 
     private View view;
     private String[] args;
-    private FileContent fileContent;
     private StatisticalAnalysis wordAnalysis;
     private StatisticalAnalysis charAnalysis;
 
@@ -22,11 +21,12 @@ public class StatisticalAnalysisController {
     }
 
     public void run() {
+        FileContent fileContent;
         long startTime = System.nanoTime();
         view.printLogo();
         for (String fileName : args) {
             fileContent = new FileContent(fileName);
-            view.printMessage(fileName);
+            view.printMessage(fileContent.getFileName());
             wordAnalysis = new StatisticalAnalysis(fileContent.wordIterator());
             charAnalysis = new StatisticalAnalysis(fileContent.charIterator());
             showAnalysis();
