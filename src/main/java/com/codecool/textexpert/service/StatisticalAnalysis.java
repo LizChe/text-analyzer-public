@@ -53,13 +53,13 @@ public class StatisticalAnalysis {
             }
         }
 
-        Set<String> occuredMoreThanN = new HashSet<>();
+        Set<String> occurredMoreThanN = new HashSet<>();
         for (String key : countOfUniqueWords.keySet()) {
             if (countOfUniqueWords.get(key) > n) {
-                occuredMoreThanN.add(key);
+                occurredMoreThanN.add(key);
             }
         }
-        return occuredMoreThanN;
+        return occurredMoreThanN;
     }
 
     public Set<String> getUniqueChars() {
