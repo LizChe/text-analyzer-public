@@ -53,8 +53,7 @@ public class StatisticalAnalysisController {
 
     private int calculateOnePercentOfUniqueWords() {
         Double onePercentOfUniqueWords = 0.01 * wordAnalysis.size();
-        int n = onePercentOfUniqueWords.intValue();
-        return n;
+        return onePercentOfUniqueWords.intValue();
     }
 
     private String countVowels() {
