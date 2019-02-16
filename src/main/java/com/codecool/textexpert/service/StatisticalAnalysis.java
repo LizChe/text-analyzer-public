@@ -85,16 +85,7 @@ public class StatisticalAnalysis {
 
     public void showLettersPercentage() {
         View view = new View();
-        Set<String> uniqueChars = getUniqueChars();
-        Map<String, Double> charsPercentage = new HashMap<>();
-        double sumOfChars = size();
-
-        for (String letter : uniqueChars) {
-            double letterSum = countOf(letter);
-            double percentage = (letterSum / sumOfChars) * 100;
-            charsPercentage.put(letter, percentage);
-        }
-
+        Map<String, Double> charsPercentage = getLettersPercentage();
         for (Map.Entry<String, Double> entry : charsPercentage.entrySet()) {
             view.printFormattedMessage("[%s ➛ %.2f%s] ", entry.getKey(), entry.getValue(), "%");
         }
@@ -107,5 +98,18 @@ public class StatisticalAnalysis {
             uniqueChars.add(letter);
         }
         return uniqueChars;
+    }
+
+    private Map<String, Double> getLettersPercentage() {
+        Set<String> uniqueChars = getUniqueChars();
+        Map<String, Double> charsPercentage = new HashMap<>();
+        double sumOfChars = size();
+
+        for (String letter : uniqueChars) {
+            double letterSum = countOf(letter);
+            double percentage = (letterSum / sumOfChars) * 100;
+            charsPercentage.put(letter, percentage);
+        }
+        return charsPercentage;
     }
 }
