@@ -1,9 +1,5 @@
 package com.codecool.textexpert.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 import com.codecool.textexpert.dao.FileContent;
 import com.codecool.textexpert.service.StatisticalAnalysis;
 import com.codecool.textexpert.view.View;
@@ -43,46 +39,11 @@ public class StatisticalAnalysisController {
         view.printMessage("𝕷𝖔𝖛𝖊 𝖈𝖔𝖚𝖓𝖙: " + wordAnalysis.countOf("love"));
         view.printMessage("𝕳𝖆𝖙𝖊 𝖈𝖔𝖚𝖓𝖙: " + wordAnalysis.countOf("hate"));
         view.printMessage("𝔐𝖚𝖘𝖎𝖈 𝖈𝖔𝖚𝖓𝖙: " + wordAnalysis.countOf("music"));
-        view.printMessage("𝖁𝖔𝖜𝖊𝖑 𝖈𝖔𝖚𝖓𝖙 ⦅%⦆: " + countVowels());
-        view.printMessage("𝖆:𝖊 𝖗𝖆𝖙𝖎𝖔: " + countAERatio());
-        view.printMessage("𝕸𝖔𝖘𝖙 𝖚𝖘𝖊𝖉 𝖜𝖔𝖗𝖉𝖘 ⦅＜𝟙%⦆: \n" + wordAnalysis.occurMoreThan(calculateOnePercentOfUniqueWords()));
+        view.printMessage("𝖁𝖔𝖜𝖊𝖑 𝖈𝖔𝖚𝖓𝖙 ⦅%⦆: " + charAnalysis.countVowelsPercentage());
+        view.printMessage("𝖆:𝖊 𝖗𝖆𝖙𝖎𝖔: " + charAnalysis.countAERatio());
+        view.printMessage("𝕸𝖔𝖘𝖙 𝖚𝖘𝖊𝖉 𝖜𝖔𝖗𝖉𝖘 ⦅＜𝟙%⦆: \n" + wordAnalysis.occurMoreThan(wordAnalysis.calculateOnePercentOfWords()));
         view.printMessage("𝕻𝖊𝖗𝖈𝖊𝖓𝖙𝖆𝖌𝖊 𝖔𝖋 𝖆𝖑𝖑 𝖑𝖊𝖙𝖙𝖊𝖗𝖘: ");
-        showLettersPercentage();
+        charAnalysis.showLettersPercentage();
         view.printMessage("\n");
-    }
-
-    private int calculateOnePercentOfUniqueWords() {
-        Double onePercentOfUniqueWords = 0.01 * wordAnalysis.size();
-        return onePercentOfUniqueWords.intValue();
-    }
-
-    private String countVowels() {
-        double vowelsSum = charAnalysis.countOf("a", "e", "i", "o", "u", "y");
-        double sumOfChars = charAnalysis.size();
-        double percentage = (vowelsSum / sumOfChars) * 100;
-        return String.format("%.0f", percentage);
-    }
-
-    private String countAERatio() {
-        double countE = charAnalysis.countOf("e");
-        double countA = charAnalysis.countOf("a");
-        double ratio = countA / countE;
-        return String.format("%.2f", ratio);
-    }
-
-    private void showLettersPercentage() {
-        Set<String> uniqueChars = charAnalysis.getUniqueChars();
-        Map<String, Double> charsPercentage = new HashMap<>();
-        double sumOfChars = charAnalysis.size();
-
-        for (String letter : uniqueChars) {
-            double letterSum = charAnalysis.countOf(letter);
-            double percentage = (letterSum / sumOfChars) * 100;
-            charsPercentage.put(letter, percentage);
-        }
-
-        for (Map.Entry<String, Double> entry : charsPercentage.entrySet()) {
-            view.printFormattedMessage("|%s -> %.1f%s| ", entry.getKey(), entry.getValue(), "%");
-        }
     }
 }
